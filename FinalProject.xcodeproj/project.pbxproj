@@ -7,14 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		465DCE67BE1806E0CD9CD00D /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74901831C7C97EFEA212C498 /* Pods_FinalProject.framework */; };
+		CF390E6521AF7D3C003B4AF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF390E6421AF7D3C003B4AF7 /* GoogleService-Info.plist */; };
 		CF3FA63221AC52D40079243B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3FA63121AC52D40079243B /* AppDelegate.swift */; };
 		CF3FA63421AC52D40079243B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3FA63321AC52D40079243B /* ViewController.swift */; };
 		CF3FA63721AC52D40079243B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF3FA63521AC52D40079243B /* Main.storyboard */; };
 		CF3FA63921AC52D50079243B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF3FA63821AC52D50079243B /* Assets.xcassets */; };
 		CF3FA63C21AC52D50079243B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF3FA63A21AC52D50079243B /* LaunchScreen.storyboard */; };
+		CF3FA64421AC60460079243B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3FA64321AC60460079243B /* MapViewController.swift */; };
+		CF3FA64621ADCF360079243B /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3FA64521ADCF360079243B /* Spot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		74901831C7C97EFEA212C498 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95A4EA9302A024ADDBA52F55 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
+		BEF6C82F0D184AA84E12C56D /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
+		CF390E6421AF7D3C003B4AF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CF3FA62E21AC52D40079243B /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF3FA63121AC52D40079243B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF3FA63321AC52D40079243B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +30,8 @@
 		CF3FA63821AC52D50079243B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF3FA63B21AC52D50079243B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF3FA63D21AC52D50079243B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF3FA64321AC60460079243B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CF3FA64521ADCF360079243B /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				465DCE67BE1806E0CD9CD00D /* Pods_FinalProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C96507DF93934466B13AE4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74901831C7C97EFEA212C498 /* Pods_FinalProject.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B531688239DC11DC2061030 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				95A4EA9302A024ADDBA52F55 /* Pods-FinalProject.debug.xcconfig */,
+				BEF6C82F0D184AA84E12C56D /* Pods-FinalProject.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CF3FA62521AC52D40079243B = {
 			isa = PBXGroup;
 			children = (
 				CF3FA63021AC52D40079243B /* FinalProject */,
 				CF3FA62F21AC52D40079243B /* Products */,
+				8B531688239DC11DC2061030 /* Pods */,
+				1C96507DF93934466B13AE4B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,11 +85,14 @@
 			isa = PBXGroup;
 			children = (
 				CF3FA63121AC52D40079243B /* AppDelegate.swift */,
+				CF3FA64521ADCF360079243B /* Spot.swift */,
+				CF3FA64321AC60460079243B /* MapViewController.swift */,
 				CF3FA63321AC52D40079243B /* ViewController.swift */,
 				CF3FA63521AC52D40079243B /* Main.storyboard */,
 				CF3FA63821AC52D50079243B /* Assets.xcassets */,
 				CF3FA63A21AC52D50079243B /* LaunchScreen.storyboard */,
 				CF3FA63D21AC52D50079243B /* Info.plist */,
+				CF390E6421AF7D3C003B4AF7 /* GoogleService-Info.plist */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -71,9 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF3FA64021AC52D50079243B /* Build configuration list for PBXNativeTarget "FinalProject" */;
 			buildPhases = (
+				A6AFAA7903A33F80691C8730 /* [CP] Check Pods Manifest.lock */,
 				CF3FA62A21AC52D40079243B /* Sources */,
 				CF3FA62B21AC52D40079243B /* Frameworks */,
 				CF3FA62C21AC52D40079243B /* Resources */,
+				AA51C89ABA85D01B28371BE5 /* [CP] Embed Pods Frameworks */,
+				63C3454298BCF182DD733BCE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF3FA63C21AC52D50079243B /* LaunchScreen.storyboard in Resources */,
+				CF390E6521AF7D3C003B4AF7 /* GoogleService-Info.plist in Resources */,
 				CF3FA63921AC52D50079243B /* Assets.xcassets in Resources */,
 				CF3FA63721AC52D40079243B /* Main.storyboard in Resources */,
 			);
@@ -130,13 +167,90 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		63C3454298BCF182DD733BCE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FinalProject/Pods-FinalProject-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinalProject/Pods-FinalProject-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6AFAA7903A33F80691C8730 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FinalProject-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA51C89ABA85D01B28371BE5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FinalProject/Pods-FinalProject-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinalProject/Pods-FinalProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CF3FA62A21AC52D40079243B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CF3FA63421AC52D40079243B /* ViewController.swift in Sources */,
+				CF3FA64421AC60460079243B /* MapViewController.swift in Sources */,
 				CF3FA63221AC52D40079243B /* AppDelegate.swift in Sources */,
+				CF3FA64621ADCF360079243B /* Spot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +394,7 @@
 		};
 		CF3FA64121AC52D50079243B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95A4EA9302A024ADDBA52F55 /* Pods-FinalProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +413,7 @@
 		};
 		CF3FA64221AC52D50079243B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEF6C82F0D184AA84E12C56D /* Pods-FinalProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
