@@ -9,15 +9,15 @@
 import UIKit
 import MapKit
 
+
 class MapViewController: UIViewController {
-    
-    //TODO:- get points of interest and plot them instead of using exact midpoint
     
     //MARK:- IBOutlets and variables
     @IBOutlet weak var mapView: MKMapView!
-    let regionDistance: CLLocationDistance = 750
-    let key = "AIzaSyAVuJIbJ0vYu9USI4xzRNTl-BWaviYbAKc"
+    @IBOutlet weak var searchBar: UISearchBar!
+    let regionDistance: CLLocationDistance = 1500
     
+    var searchActive : Bool = false
     var midLon: Double!
     var midLat: Double!
     var spot: Spot!
@@ -25,6 +25,7 @@ class MapViewController: UIViewController {
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         if midLon == 0.0 || midLat == 0.0 {
             //center to current location - show alert
             showAlert(title: "Could not fine Halfway Point", message: "Invalid coordinates to display Halfway Point")
@@ -33,6 +34,7 @@ class MapViewController: UIViewController {
             centerAroundCoordinates()
         }
     }
+    
     
     //MARK:- Functions
     func showAlert(title: String, message: String) {
@@ -52,7 +54,6 @@ class MapViewController: UIViewController {
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: midLat, longitude: midLon)
         var address = ""
-        var streetName = ""
         geoCoder.reverseGeocodeLocation(location, completionHandler:
             {
                 placemarks, error -> Void in
@@ -60,30 +61,63 @@ class MapViewController: UIViewController {
                 guard let placeMark = placemarks!.first else {
                     self.showAlert(title: "Error", message: "Something went wrong when finding address")
                     return
-                    
                 }
                 
-                // Location name
-                if let locationName = placeMark.location {
-                    print(locationName)
-                }
                 // Street address
                 if let street = placeMark.thoroughfare {
-                    streetName = street
-                }
-                // City
-                if let city = placeMark.subAdministrativeArea {
-                    // Zip code
-                    if let zip = placeMark.isoCountryCode {
-                        // Country
-                        if let country = placeMark.country {
-                            address = "\(city), \(zip), \(country)"
+                    if let city = placeMark.subAdministrativeArea {
+                        // Zip code
+                        if let zip = placeMark.isoCountryCode {
+                            // Country
+                            if let country = placeMark.country {
+                                address = "\(street), \(city), \(zip), \(country)"
+                            }
                         }
                     }
                 }
-                self.spot = Spot(name: streetName, address: address, coordinate: coordinate)
+                self.spot = Spot(name: "Halfway Point", address: address, coordinate: coordinate)
                 self.updateMap()
+                
         })
+    }
+    
+    func makeRequest(text: String) {
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = text
+        request.region = mapView.region
+        let search = MKLocalSearch(request: request)
+        search.start { response, error in
+            guard let response = response else {
+                print("There was an error searching for: \(String(describing: request.naturalLanguageQuery)) error: \(String(describing: error))")
+                return
+            }
+            for item in response.mapItems {
+                var name = ""
+                var address = ""
+                // Location name
+                if let locationName = item.placemark.name {
+                    name = "\(locationName)"
+                }
+                // Street address
+                if let number = item.placemark.subThoroughfare {
+                    if let street = item.placemark.thoroughfare {
+                        // City
+                        if let city = item.placemark.subAdministrativeArea {
+                            // Zip code
+                            if let zip = item.placemark.isoCountryCode {
+                                address = "\(number) \(street), \(city), \(zip)"
+                                
+                            }
+                        }
+                    }
+                }
+                
+                let coordinate = item.placemark.coordinate
+                let spotTemp = Spot(name: name , address: address, coordinate: coordinate)
+                self.mapView.addAnnotation(spotTemp)
+                print("**************** SPOT: \(spotTemp.name), \(spotTemp.address), \(spotTemp.coordinate) ******************")
+            }
+        }
     }
     
     func updateMap() {
@@ -94,3 +128,25 @@ class MapViewController: UIViewController {
 
 }
 
+extension MapViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        makeRequest(text: searchText)
+        self.updateMap()
+    }
+}
