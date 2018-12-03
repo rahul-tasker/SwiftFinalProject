@@ -15,7 +15,7 @@ class MapViewController: UIViewController {
     //MARK:- IBOutlets and variables
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
-    let regionDistance: CLLocationDistance = 1500
+    let regionDistance: CLLocationDistance = 5000
     
     var searchActive : Bool = false
     var midLon: Double!

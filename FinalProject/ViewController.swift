@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     
     //MARK:- IBOutlets and variables
     @IBOutlet weak var addOneInput: UILabel!
+    @IBOutlet weak var findAddOneBtn: UIButton!
     @IBOutlet weak var addTwoInput: UILabel!
     @IBOutlet weak var findLocationButton: UIButton!
     
@@ -31,8 +32,6 @@ class ViewController: UIViewController {
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        addOneInput.text = ""
-        addTwoInput.text = ""
         findLocationButton.isEnabled = false
         if spot1 == nil { // We are adding a new record, fields should be editable
             spot1 = Spot()
@@ -73,7 +72,7 @@ class ViewController: UIViewController {
     }
     
     
-    //TODO:- fix by setting 2 spot variables and getting coordinates from them
+
     @IBAction func searchButtonPressed(_ sender: Any) {
         print("*************** reached1 \(spot1.coordinate.longitude), \(spot1.coordinate.latitude)")
         print("*************** reached2 \(spot2.coordinate.longitude), \(spot2.coordinate.latitude)")
@@ -81,16 +80,59 @@ class ViewController: UIViewController {
     }
     
     func checkToEnableButton() {
-        if (addOneInput.text == "" || addTwoInput.text == "") {
+        if (addOneInput.text == "Address One" || addTwoInput.text == "Address Two") {
             if findLocationButton.isEnabled == true {
                 findLocationButton.isEnabled = false
             }
         }
-        if (addTwoInput.text != "" && addTwoInput.text != "") {
+        if (addTwoInput.text != "Address One" && addTwoInput.text != "Address Two") {
             if findLocationButton.isEnabled == false {
                 findLocationButton.isEnabled = true
             }
         }
+    }
+    
+    func getAddressFromLatLon(pdblLatitude: Double, withLongitude pdblLongitude: Double) {
+        var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
+        let lat: Double = pdblLatitude
+        let lon: Double = pdblLongitude
+        let ceo: CLGeocoder = CLGeocoder()
+        center.latitude = lat
+        center.longitude = lon
+        
+        let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+        ceo.reverseGeocodeLocation(loc, completionHandler:
+            {(placemarks, error) in
+                if (error != nil)
+                {
+                    print("reverse geodcode fail: \(error!.localizedDescription)")
+                }
+                let pm = placemarks! as [CLPlacemark]
+                
+                if pm.count > 0 {
+                    let pm = placemarks![0]
+                    var addressString : String = ""
+                    if pm.subLocality != nil {
+                        addressString = addressString + pm.subLocality! + ", "
+                    }
+                    if pm.thoroughfare != nil {
+                        addressString = addressString + pm.thoroughfare! + ", "
+                    }
+                    if pm.locality != nil {
+                        addressString = addressString + pm.locality! + ", "
+                    }
+                    if pm.country != nil {
+                        addressString = addressString + pm.country! + ", "
+                    }
+                    if pm.postalCode != nil {
+                        addressString = addressString + pm.postalCode! + " "
+                    }
+                    self.spot1 = Spot(name: "", address: addressString, coordinate: center)
+
+                    
+                }
+        })
+        
     }
     
     func getCurrentLocation() {
