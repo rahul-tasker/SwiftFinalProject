@@ -74,9 +74,6 @@ class ViewController: UIViewController {
     
 
     @IBAction func searchButtonPressed(_ sender: Any) {
-        print("*************** reached1 \(spot1.coordinate.longitude), \(spot1.coordinate.latitude)")
-        print("*************** reached2 \(spot2.coordinate.longitude), \(spot2.coordinate.latitude)")
-        print("*************** reachedMid \(self.midLon), \(self.midLat)")
     }
     
     func checkToEnableButton() {

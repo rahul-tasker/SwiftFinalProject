@@ -15,7 +15,7 @@ class MapViewController: UIViewController {
     //MARK:- IBOutlets and variables
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
-    let regionDistance: CLLocationDistance = 5000
+    let regionDistance: CLLocationDistance = 1200
     
     var searchActive : Bool = false
     var midLon: Double!
@@ -115,7 +115,7 @@ class MapViewController: UIViewController {
                 let coordinate = item.placemark.coordinate
                 let spotTemp = Spot(name: name , address: address, coordinate: coordinate)
                 self.mapView.addAnnotation(spotTemp)
-                print("**************** SPOT: \(spotTemp.name), \(spotTemp.address), \(spotTemp.coordinate) ******************")
+                
             }
         }
     }
